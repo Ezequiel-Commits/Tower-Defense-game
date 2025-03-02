@@ -1,0 +1,1 @@
+"""A manager class to avoid lag when animating the screen"""
