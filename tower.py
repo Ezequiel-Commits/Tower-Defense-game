@@ -16,5 +16,7 @@ class Tower(sprite.Sprite): #Inhertiance
 
     def updateSelf(self):
         # Create and Shoot out bullets(objects of the bullet class)
-        
-        myBullet = bullet.Bullet(x = self.x, y = self.y, velx = 0, vely = 2)
+        self.draw()    
+        # Right now this is creating multiple bullets that update themselves once only
+        myBullet = bullet.Bullet(x = self.x, y = self.y, velX = 2, velY = 2)
+        myBullet.updateSelf()

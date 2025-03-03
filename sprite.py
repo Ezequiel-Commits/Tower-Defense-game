@@ -1,4 +1,4 @@
-"""Creating a Sprite class for different objects in my game(Tower, bullet, orc, etc.)"""
+"""A Sprite superclass for different objects in my game(Tower, bullet, orc, etc.)"""
 import turtle
 
 class Sprite:

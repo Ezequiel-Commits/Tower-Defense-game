@@ -4,22 +4,19 @@ import sprite
 
 class Bullet(sprite.Sprite): #Inhertiance 
 
-    def __init__(self, x, y, velx, vely):
+    def __init__(self, x, y, velX, velY):
         sprite.Sprite.__init__(self, x, y)
         # Add velocities to the constructor to enable shooting later on 
-        self.velx = velx
-        self.vely = vely
+        self.velX = velX
+        self.velY = velY
     
     def updateSelf(self):
         # The shooting of the bullet 
-        self.x += self.velx
-        self.y += self.vely
+        self.x += self.velX
+        self.y += self.velY
+        print(self.y)
         
         self.turt.clear()
         self.turt.penup()
         self.turt.goto(self.x, self.y)
         self.turt.dot(5)
-
-        # For now, Loop this until some end condition is met(e.g. a collision or leaving the screen)
-        # This will likely need to be moved to the animation manager 
-        turtle.ontimer(self.updateSelf, 500)

@@ -3,6 +3,8 @@ import turtle
 import sprite
 import tower
 import bullet
+import orc
+import animationManager
 
 WINDOW  = None
 # X and Y dimensions of the window; measured in pixels
@@ -21,17 +23,19 @@ def main():
 
     setupWin()
 
-    # Basic testing of creating objects and using their methods
-    mySpriteObject = sprite.Sprite(10,20)
-    # mySpriteObject.draw()
+    """Basic testing of creating objects and using their methods"""
+
 
     myTowerObject = tower.Tower(20,10)
-    myTowerObject.draw()
-    myTowerObject.updateSelf()
 
-    myBulletObject = bullet.Bullet(x = 5, y = -5, velx = 1, vely = 1)
-    # myBulletObject.draw()
-    # myBulletObject.updateSelf()
+    myBulletObject = bullet.Bullet(x = 5, y = -5, velX = 1, velY = 1)
+
+    myOrcObject = orc.Orc(x = 0, y = 20)
+
+    # An animation Manager to avoid lag 
+    mySpriteList = [myTowerObject, myOrcObject]
+    myAnimationManager = animationManager.AnimationManager(spriteList = mySpriteList)
+    myAnimationManager.updateScreen()
 
     WINDOW.mainloop() #Runs the screen
 
