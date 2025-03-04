@@ -9,8 +9,9 @@ class Orc(sprite.Sprite):
         # Draw a triangle to represent orcs for now
         sprite.Sprite.draw(self) #Go to the x and y passed in the constructor
         for i in range(3):
-            self.turt.forward(5)
+            self.turt.forward(self.size)
             self.turt.right(120)
+        self.drawCircle()
 
     def updateSelf(self):
         # Follow a path

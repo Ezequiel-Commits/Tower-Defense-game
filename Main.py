@@ -5,10 +5,11 @@ import tower
 import bullet
 import orc
 import animationManager
+import collisionManager
 
 WINDOW  = None
 # X and Y dimensions of the window; measured in pixels
-WINX, WINY = 400, 350
+WINX, WINY = 400, 400
 
 def main():
     """Main function"""
@@ -25,17 +26,27 @@ def main():
 
     """Basic testing of creating objects and using their methods"""
 
+    myBulletObject = bullet.Bullet(x = 20, y = 10, velX = 0, velY = 1, size = 5)
+    myBulletObject2 = bullet.Bullet(x = 20, y = 120, velX = 0, velY = -1, size = 5)
 
-    myTowerObject = tower.Tower(20,10)
+    myTowerObject = tower.Tower(x = 20, y = 140, size = 10, bullet = myBulletObject)
+    # myTowerObject.draw()
 
-    myBulletObject = bullet.Bullet(x = 5, y = -5, velX = 1, velY = 1)
+    myOrcObject = orc.Orc(x = 20, y = 50, size = 10)
+    # myOrcObject.draw()
 
-    myOrcObject = orc.Orc(x = 0, y = 20)
+    myOrcObject2 = orc.Orc(x = 20, y = 100, size = 10)
+
+    myTowerObject2 = tower.Tower(x = 20, y = 10, size = 10, bullet = myBulletObject2)
+    
+    mySpriteList = [myTowerObject, myOrcObject, myBulletObject, myOrcObject2, myTowerObject2, myBulletObject2]
 
     # An animation Manager to avoid lag 
-    mySpriteList = [myTowerObject, myOrcObject]
     myAnimationManager = animationManager.AnimationManager(spriteList = mySpriteList)
     myAnimationManager.updateScreen()
+
+
+
 
     WINDOW.mainloop() #Runs the screen
 
