@@ -1,6 +1,10 @@
 """A manager class to help avoid lag when updating sprites"""
 import turtle
 import collisionManager
+import tower
+import bullet
+import orcFactory
+import random
 
 class AnimationManager:
     def __init__(self, spriteList):
@@ -9,21 +13,46 @@ class AnimationManager:
         # A collision manager to encapsulate collision checking
         self.myCollisionManager = collisionManager.CollisionManager(spriteList = self.spriteList)
 
+        self.frameCount = 0
+
         turtle.tracer(False)
 
     def updateScreen(self):
+
+        if self.frameCount % 60 == 0:
+                # Create a new orc if 60 frames have been updated. 
+
+                # Add a random y value eventually
+                myFactory = orcFactory.OrcFactory(x = -199, y = 0, size = 15)
+                newOrc = myFactory.createOrc()
+                # print("=== 60 frames passed ===")
+                self.spriteList.append( newOrc ) 
+
         for sprite in self.spriteList:
             # Update each sprite in here rather than individually, so as to avoid lag
             sprite.updateSelf()
             
-            # Check the sprites' coordinates
             if sprite.y >= 200 or sprite.y <= -200 or sprite.x >= 200 or sprite.x <= -200:
+                # Check the sprites' coordinates
+                
+                # if outside of the window, undraw the sprite and remove the sprite from spriteList 
                 sprite.undraw()
-                # if outside of the window, remove sprite from spriteList
                 self.spriteList.remove( sprite )
             
-            # Check sprite collisons
-            self.myCollisionManager.checkCollisions()
+            if isinstance(sprite, tower.Tower):
+                # Check if the sprite is a tower
+                if self.frameCount % 60 == 0:
+                    # Check if it's been 60 frames since the last time a bullet was fired.  
+                    
+                    # Additionally, two bullets fire the first time this runs 
+                    myNewBullet = bullet.Bullet(x = sprite.x, y = sprite.y, velX = 0, \
+                                                velY = -1, size = 5)
+                    
+                    self.spriteList.append( myNewBullet ) 
+
+            self.myCollisionManager.checkCollisions() # Check collisons between sprite pairs
+
+        self.frameCount += 1 # Add 1 to the frame count each time this function is called
             
         turtle.update()
 

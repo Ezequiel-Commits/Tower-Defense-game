@@ -5,10 +5,8 @@ import time
 
 class Tower(sprite.Sprite): #Inhertiance 
 
-    def __init__(self, x, y, size, bullet):
+    def __init__(self, x, y, size):
         sprite.Sprite.__init__(self, x, y, size)
-        # pass in a bullet object here so as to avoid creating bullet objects later
-        self.myBullet = bullet
 
 
     def draw(self):
@@ -21,5 +19,4 @@ class Tower(sprite.Sprite): #Inhertiance
 
     def updateSelf(self):
         self.draw()    
-        # Creating an if statement to check whether or not a new bullet should be made
             

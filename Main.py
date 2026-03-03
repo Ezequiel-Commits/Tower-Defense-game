@@ -1,11 +1,10 @@
 import turtle
 
-import sprite
 import tower
 import bullet
 import orc
 import animationManager
-import collisionManager
+import gatehouse
 
 WINDOW  = None
 # X and Y dimensions of the window; measured in pixels
@@ -26,10 +25,7 @@ def main():
 
     """Basic testing of creating objects and using their methods"""
 
-    myBulletObject = bullet.Bullet(x = 20, y = 10, velX = 0, velY = 1, size = 5)
-    myBulletObject2 = bullet.Bullet(x = 20, y = 120, velX = 0, velY = -1, size = 5)
-
-    myTowerObject = tower.Tower(x = 20, y = 140, size = 10, bullet = myBulletObject)
+    myTowerObject = tower.Tower(x = 20, y = 140, size = 10)
     # myTowerObject.draw()
 
     myOrcObject = orc.Orc(x = 20, y = 50, size = 10)
@@ -37,9 +33,11 @@ def main():
 
     myOrcObject2 = orc.Orc(x = 20, y = 100, size = 10)
 
-    myTowerObject2 = tower.Tower(x = 20, y = 10, size = 10, bullet = myBulletObject2)
+    myTowerObject2 = tower.Tower(x = -20, y = 140, size = 10)
+
+    myGatehouse = gatehouse.Gatehouse(x = 100, y = 0, size = 15) #Bit of error with the bounding circle here 
     
-    mySpriteList = [myTowerObject, myOrcObject, myBulletObject, myOrcObject2, myTowerObject2, myBulletObject2]
+    mySpriteList = [myTowerObject, myTowerObject2, myGatehouse]
 
     # An animation Manager to avoid lag 
     myAnimationManager = animationManager.AnimationManager(spriteList = mySpriteList)

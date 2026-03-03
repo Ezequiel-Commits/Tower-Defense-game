@@ -15,16 +15,16 @@ class Orc(sprite.Sprite):
 
     def updateSelf(self):
         # Follow a path
+        
         self.draw()
         # Path variables
-        point1 = [-20,20]
-        reached1 = False
-        point2 = [-20,0]
-        reached2 = False
-        if self.x > -100 and reached1 == False:
+        point1 = [210,0]
+        reachedPoint1 = False
+
+        if self.x < point1[0] and reachedPoint1 == False:
             # If the orc hasn't reached the first point, move toward that point 
-            self.x -= 1
+            self.x += 3
             self.turt.clear()
             self.draw()
         else:
-            reached1 == True
+            reachedPoint1 == True

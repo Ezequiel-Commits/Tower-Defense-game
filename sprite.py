@@ -14,8 +14,10 @@ class Sprite:
         pass
 
     def drawCircle(self):
+        # Draw a bounding circle given a center x and y
         self.turt.penup()
         self.turt.goto(self.x, self.y)
+        self.turt.setheading(0) #In case the turtle is at a diff. heading
         self.turt.forward(self.size/2)
         self.turt.right(90)
         self.turt.forward(self.size*1.5)
@@ -30,7 +32,6 @@ class Sprite:
         self.turt.penup()
         self.turt.goto(self.x,self.y)
         self.turt.pendown()
-        # Draw a circle given a center x and y
 
     def undraw(self):
         # This doesn't get rid of the turtles. I'd hope that doesn't cause enough lag to be noticable.
