@@ -36,4 +36,4 @@ class Sprite:
     def undraw(self):
         # This doesn't get rid of the turtles. I'd hope that doesn't cause enough lag to be noticable.
         self.turt.clear()
-        print("Undraw called")
+        # print("Undraw called")

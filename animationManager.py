@@ -20,10 +20,11 @@ class AnimationManager:
     def updateScreen(self):
 
         if self.frameCount % 60 == 0:
-                # Create a new orc if 60 frames have been updated. 
+                # Create a new orc if 60 frames have passed. 
 
                 # Add a random y value eventually
                 myFactory = orcFactory.OrcFactory(x = -199, y = 0, size = 15)
+                # Somewhere in constructing this orc, I'll want to add a path for it to follow. 
                 newOrc = myFactory.createOrc()
                 # print("=== 60 frames passed ===")
                 self.spriteList.append( newOrc ) 
