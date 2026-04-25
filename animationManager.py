@@ -1,4 +1,5 @@
 """A manager class to help avoid lag when updating sprites"""
+import sys
 import turtle
 import collisionManager
 import tower
@@ -19,7 +20,7 @@ class AnimationManager:
 
     def updateScreen(self):
 
-        if self.frameCount % 60 == 0:
+        if self.frameCount % 20 == 0:
                 # Create a new orc if 60 frames have passed. 
 
                 # Add a random y value eventually
@@ -51,8 +52,10 @@ class AnimationManager:
                     
                     self.spriteList.append( myNewBullet ) 
 
-            self.myCollisionManager.checkCollisions() # Check collisons between sprite pairs
-
+            if self.myCollisionManager.checkCollisions() == 1: # Check collisons between sprite pairs
+                sys.exit("game over")
+            else:
+                pass
         self.frameCount += 1 # Add 1 to the frame count each time this function is called
             
         turtle.update()

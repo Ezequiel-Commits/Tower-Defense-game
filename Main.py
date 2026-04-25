@@ -35,7 +35,7 @@ def main():
 
     myTowerObject2 = tower.Tower(x = -20, y = 140, size = 10)
 
-    myGatehouse = gatehouse.Gatehouse(x = 100, y = 0, size = 15) #Bit of error with the bounding circle here 
+    myGatehouse = gatehouse.Gatehouse(x = 150, y = 0, size = 15) #Bit of error with the bounding circle here 
     
     mySpriteList = [myTowerObject, myTowerObject2, myGatehouse]
 
@@ -43,9 +43,13 @@ def main():
     myAnimationManager = animationManager.AnimationManager(spriteList = mySpriteList)
     myAnimationManager.updateScreen()
 
-
-
-
+    def createTowerOnClick(x,y):
+          newTower = tower.Tower(x, y, size = 10)
+          mySpriteList.append(newTower)
+    
+    # Place a new tower when the player clicks on the sceen 
+    WINDOW.listen()
+    WINDOW.onscreenclick(createTowerOnClick)
     WINDOW.mainloop() #Runs the screen
 
 main()

@@ -2,7 +2,7 @@
 import orc
 
 class OrcFactory:
-
+    #Do I need this init function? Seems repetitive right now, when all orcs are of the same size and have the same starting point. 
     def __init__(self, x, y, size):
         self.x = x
         self.y = y

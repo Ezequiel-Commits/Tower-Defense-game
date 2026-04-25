@@ -2,15 +2,19 @@
 import sprite
 import turtle
 
-checkpointsForMap1 = [[-50,0]]
+checkpointsForMap1 = [[-50,0],[-50,100],[75,100],[75,0],[150,0]]
 # reachedpoint0 = False
 
 class Orc(sprite.Sprite):
     # Use the sprite constructor
-    # add a specific init function
     def __init__(self, x, y, size):
+        # add a specific init function for orc pathing
         super().__init__(x, y, size)
         self.reachedpoint0 = False
+        self.reachedpoint1 = False
+        self.reachedpoint2 = False
+        self.reachedpoint3 = False
+        self.reachedpoint4 = False
     
     def draw(self):
         # Draw a triangle to represent orcs for now
@@ -23,23 +27,34 @@ class Orc(sprite.Sprite):
     def updateSelf(self):
         # Follow a path
         self.draw()
-        # Path variables
+        # Path variables; feel a bit redundant
         point0 = checkpointsForMap1[0]
         #Replacing this variable with the coordinates of the first point? 
 
         # Iteration through checkpoints
-        if self.x < point0[0] and self.reachedpoint0 == False:
+        if self.x < checkpointsForMap1[0][0] and self.reachedpoint0 == False:
             # If the orc hasn't reached the first point, move toward that point 
             self.x += 3
             self.turt.clear()
             self.draw()
-        elif self.x >= point0[0]:
+        elif self.y < checkpointsForMap1[1][1] and self.reachedpoint1 == False:
             # If the orc has reached the first point, move toward the second point
-            print("reached")
             self.y += 3
             self.turt.clear()
             self.draw()
             self.reachedpoint0 = True
-        # elif self.y 
-        else:
-            pass
+        elif self.x < checkpointsForMap1[2][0] and self.reachedpoint2 == False:
+            self.x += 3
+            self.turt.clear()
+            self.draw()
+            self.reachedpoint1 = True
+        elif self.y > checkpointsForMap1[3][1] and self.reachedpoint3 == False:
+            self.y -= 3
+            self.turt.clear()
+            self.draw()
+            self.reachedpoint2 = True
+        elif self.x < checkpointsForMap1[4][0] and self.reachedpoint4 == False:
+            self.x += 3
+            self.turt.clear()
+            self.draw()
+            self.reachedpoint3 = True

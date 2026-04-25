@@ -24,6 +24,7 @@ class CollisionManager:
                         if isinstance(sprite1, orc.Orc) and isinstance(sprite2, gatehouse.Gatehouse):
                             # Remove the sprite's drawing and the remove the sprite from the spriteList
                             print("Orc + gatehouse: the game should end")
+                            return 1
                             sprite1.undraw()
                             self.spriteList.remove( sprite1 )
                             # Add an instance variable to tower that checks how many times it's been hit? 
