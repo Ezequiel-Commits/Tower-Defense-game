@@ -20,7 +20,7 @@ class AnimationManager:
 
     def updateScreen(self):
 
-        if self.frameCount % 20 == 0:
+        if self.frameCount % 60 == 0:
                 # Create a new orc if 60 frames have passed. 
 
                 # Add a random y value eventually
